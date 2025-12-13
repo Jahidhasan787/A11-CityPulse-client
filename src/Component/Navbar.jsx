@@ -1,12 +1,35 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const links =<><NavLink to="/"><li className="pl-5 text-lg ">Home</li></NavLink>
-            <NavLink to={"/issues"}><li className="pl-5 text-lg ">All Issues</li></NavLink>
-            <NavLink to={"/stuffs"}><li className="pl-5 text-lg ">All Stuff</li></NavLink>
-            <NavLink to={"/contact"}><li className="pl-5 text-lg ">Contact </li></NavLink>
-  </>
+  const { user, logOut } = use(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast("logged out");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const links = (
+    <>
+      <NavLink to="/">
+        <li className="pl-5 ">Home</li>
+      </NavLink>
+      <NavLink to={"/issues"}>
+        <li className="pl-5 ">All Issues</li>
+      </NavLink>
+      <NavLink to={"/stuffs"}>
+        <li className="pl-5  ">All Stuff</li>
+      </NavLink>
+      <NavLink to={"/contact"}>
+        <li className="pl-5 ">Contact </li>
+      </NavLink>
+    </>
+  );
   return (
     <div>
       <div className="navbar bg-base-100 shadow-sm lg:px-12">
@@ -20,20 +43,19 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                />
               </svg>
             </div>
             <ul
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
             >
-            {links}
+              {links}
             </ul>
           </div>
           <Link to="/">
@@ -43,13 +65,42 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-           {links}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <Link to={"login"}><p className="btn mr-2">Log In</p></Link>
-          <Link to={"register"}><p className="btn">Sign Up</p></Link>
+          {user ? (
+            <>
+              <div className="dropdown mr-7">
+                <div tabIndex={0} className="ml-5 ">
+                  <img
+                    className="rounded-full h-12 min-w-10 outline"
+                    src={user.photoURL || "/Avatar.png"}
+                    alt=""
+                  />
+                </div>
+                <ul
+                  tabIndex="0"
+                  className="menu  dropdown-content bg-base-100 mt-2 w-30 p-2 shadow "
+                >
+                  <p className="text-center font-semibold pb-1">
+                    {user.displayName}
+                  </p>
+                  <button className="btn btn-accent" onClick={handleLogOut}>
+                    Log Out
+                  </button>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <>
+              <Link to={"login"}>
+                <p className="btn mr-2">Log In</p>
+              </Link>
+              <Link to={"register"}>
+                <p className="btn">Sign Up</p>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
