@@ -37,7 +37,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/">
-            <p className="btn font-bold text-2xl text-blue-700">
+            <p className="font-bold text-2xl text-blue-700">
               City<span className="text-red-500">Pulse</span>
             </p>
           </Link>

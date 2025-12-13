@@ -7,6 +7,7 @@ import Register from "../Pages/Register";
 import Issues from "../Pages/Issues";
 import Stuffs from "../Pages/Stuffs";
 import ContactUs from "../Component/ContactUs";
+import Error2 from "../Component/Error2";
 
 export const router = createBrowserRouter([
 {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
         {
             path:"/contact",
             Component: ContactUs,
+        },
+        {
+            path:"/issues/*",
+            Component: Error2,
         },
     ]
 }
