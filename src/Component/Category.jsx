@@ -5,7 +5,7 @@ import { FaHammer, FaRoad, FaTools, FaTrashAlt } from 'react-icons/fa';
 const Category = () => {
     return (
         <div>
-            <div className="my-20 mx-auto">
+            <div className="my-10 mx-auto">
         <h2 className="text-4xl mb-5 text-center font-bold ">Issue Category</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
           <div className="p-5 border rounded-xl shadow-sm hover:shadow-md transition cursor-pointer">

@@ -6,8 +6,9 @@ import LogIn from "../Pages/LogIn";
 import Register from "../Pages/Register";
 import Issues from "../Pages/Issues";
 import Stuffs from "../Pages/Stuffs";
-import ContactUs from "../Component/ContactUs";
 import Error2 from "../Component/Error2";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import AddIssue from "../Pages/AddIssue";
 
 export const router = createBrowserRouter([
 {
@@ -37,12 +38,16 @@ export const router = createBrowserRouter([
             Component: Stuffs,
         },
         {
-            path:"/contact",
-            Component: ContactUs,
+            path:"/add-issue",
+            Component: AddIssue,
         },
         {
             path:"/issues/*",
             Component: Error2,
+        },
+        {
+            path:"/dashboard",
+            Component: Dashboard,
         },
     ]
 }

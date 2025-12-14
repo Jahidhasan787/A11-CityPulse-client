@@ -8,7 +8,7 @@ const Root = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <section className='w-11/12 min-h-[500px] mx-auto'>
+            <section className='w-10/12 min-h-[calc(100vh-250px)] mx-auto'>
                 <Outlet></Outlet>
             </section>
             <Footer></Footer>

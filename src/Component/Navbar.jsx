@@ -22,17 +22,17 @@ const Navbar = () => {
       <NavLink to={"/issues"}>
         <li className="pl-5 ">All Issues</li>
       </NavLink>
+      <NavLink to={"/add-issue"}>
+        <li className="pl-5 ">Add Issue </li>
+      </NavLink>
       <NavLink to={"/stuffs"}>
         <li className="pl-5  ">All Stuff</li>
-      </NavLink>
-      <NavLink to={"/contact"}>
-        <li className="pl-5 ">Contact </li>
       </NavLink>
     </>
   );
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-sm lg:px-12">
+      <div className="navbar bg-base-100 shadow-sm lg:px-26">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -70,8 +70,8 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              <div className="dropdown mr-7">
-                <div tabIndex={0} className="ml-5 ">
+              <div className="dropdown ">
+                <div tabIndex={0} className="ml-10 ">
                   <img
                     className="rounded-full h-12 min-w-10 outline"
                     src={user.photoURL || "/Avatar.png"}
@@ -82,9 +82,14 @@ const Navbar = () => {
                   tabIndex="0"
                   className="menu  dropdown-content bg-base-100 mt-2 w-30 p-2 shadow "
                 >
-                  <p className="text-center font-semibold pb-1">
+                  <p className="text-center font-semibold pb-1 bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent">
                     {user.displayName}
                   </p>
+                  <Link to="/dashboard">
+                    <p className="text-center font-semibold pb-1 hover:text-blue-600 ">
+                      Dashboard
+                    </p>
+                  </Link>
                   <button className="btn btn-accent" onClick={handleLogOut}>
                     Log Out
                   </button>
