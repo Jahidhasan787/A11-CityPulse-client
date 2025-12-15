@@ -1,10 +1,10 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import potholes from "../assets/Potholes_-_at_the_junction_of.jpg";
-import streetLight from "../assets/old-broken-street-lamp_415641-436.avif";
-import illegalConstruction from "../assets/The_Complete_Guide_to_Illegal_Construction_Demolition.jpg";
-import pipe from "../assets/broken-water-pipe-leaking.webp";
+import potholes from "../../assets/Potholes_-_at_the_junction_of.jpg";
+import streetLight from "../../assets/old-broken-street-lamp_415641-436.avif";
+import illegalConstruction from "../../assets/The_Complete_Guide_to_Illegal_Construction_Demolition.jpg";
+import pipe from "../../assets/broken-water-pipe-leaking.webp";
 
 const Banner = () => {
   return (
