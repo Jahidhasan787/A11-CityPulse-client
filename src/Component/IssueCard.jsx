@@ -10,13 +10,13 @@ const IssueCard = ({ issue }) => {
           <img
             src={image}
             alt="plant image"
-            className="w-[380px] h-[250px] rounded-xl  "
+            className="w-full mx-auto h-[250px] rounded-xl mb-3"
           />
         </figure>
         <div className="">
-          <div className="flex justify-between gap-2 items-center">
+          <div className="flex justify-between gap-2 items-center pb-3">
             <h2 className="card-title">{title}</h2>
-            <span className="bg-green-200 rounded px-2 py-1">{category}</span>
+            <span className="bg-green-200 text-[.8rem] rounded-md px-2 py-1">{category}</span>
           </div>
           <div className=" pb-3">
             <p>{location}</p>
