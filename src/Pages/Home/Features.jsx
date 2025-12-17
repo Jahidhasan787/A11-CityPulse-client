@@ -3,7 +3,7 @@ import FeaturesCard from "../../Component/FeaturesCard";
 
 const Features = () => {
   return (
-    <div className="my-10 mx-auto">
+    <div className="mt-16 mx-auto">
       <div>
         <h2 className="text-4xl mb-3 text-center font-bold ">
           Platform Features
@@ -16,7 +16,7 @@ const Features = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-8">
             <FeaturesCard icon='📸' title={"Photo base reporting"} desc={'Upload real image to clearly explain the issue'}></FeaturesCard>
             <FeaturesCard icon='📍' title={"Exact location pin"} desc={'Mark the location'}></FeaturesCard>
             <FeaturesCard icon='🔔' title={"Live status update"} desc={'Get real-time update from report to resolution'}></FeaturesCard>

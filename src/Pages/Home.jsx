@@ -4,6 +4,7 @@ import LatestResolve from './Home/LatestResolve';
 import Category from './Home/Category';
 import Work from './Home/Work';
 import Features from './Home/Features';
+import Reviews from './Home/Reviews';
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <LatestResolve></LatestResolve>
             <Work></Work>
             <Features></Features>
+            <Reviews></Reviews>
         </div>
     );
 };

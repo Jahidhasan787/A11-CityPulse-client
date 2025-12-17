@@ -15,13 +15,13 @@ const LatestResolve = () => {
 
   return (
     <div>
-      <h2 className="text-4xl mt-16 mb-2 text-center font-bold ">
+      <h2 className="text-4xl mt-16 mb-1 text-center font-bold ">
         Latest Resolve Issue
       </h2>
-      <p className="text-gray-600 text-center mb-10">
+      <p className="text-gray-600 text-center mb-8">
         Recently resolved public issue with confirmed solution.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-5 ">
         {data.map((issue) => (
           <IssueCard key={issue._id} issue={issue}></IssueCard>
         ))}

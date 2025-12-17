@@ -9,6 +9,8 @@ import Stuffs from "../Pages/Stuffs";
 import Error2 from "../Component/Error2";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddIssue from "../Pages/AddIssue";
+import PrivateRoutes from "./PrivateRoutes";
+import IssueDetails from "../Component/IssueDetails";
 
 export const router = createBrowserRouter([
 {
@@ -31,7 +33,13 @@ export const router = createBrowserRouter([
         },
         {
             path:"/issues",
+             loader:()=>fetch('http://localhost:3000/issues'),
             Component:Issues,
+        },
+        {
+          path:'/issueDetails/:id',
+          loader: ({params})=>fetch(`http://localhost:3000/issues/${params.id}`),
+          element:<PrivateRoutes><IssueDetails></IssueDetails></PrivateRoutes>
         },
         {
             path:"/stuffs",
