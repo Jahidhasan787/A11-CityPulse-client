@@ -11,7 +11,7 @@ const IssueCard = ({ issue }) => {
         <figure>
           <img
             src={image}
-            alt="plant image"
+            alt=""
             className="w-full mx-auto h-[250px] rounded-xl mb-3"
           />
         </figure>

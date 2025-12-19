@@ -7,56 +7,72 @@ import Register from "../Pages/Register";
 import Issues from "../Pages/Issues";
 import Stuffs from "../Pages/Stuffs";
 import Error2 from "../Component/Error2";
-import Dashboard from "../Pages/Dashboard/Dashboard";
+import Dashboard from "../Pages/Dashboard/DashboardLayout";
 import AddIssue from "../Pages/AddIssue";
 import PrivateRoutes from "./PrivateRoutes";
 import IssueDetails from "../Component/IssueDetails";
+import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
+import MyIssues from "../Pages/Dashboard/Citizen/MyIssues";
 
 export const router = createBrowserRouter([
-{
-    path:"/",
-    Component: Root, 
+  {
+    path: "/",
+    Component: Root,
     errorElement: <Error></Error>,
-    children:[
-        {
-            index:true,
-            path:"/",
-            Component:Home,
-        },
-        {
-            path:"/login",
-            Component:LogIn,
-        },
-        {
-            path:"/register",
-            Component: Register,
-        },
-        {
-            path:"/issues",
-             loader:()=>fetch('http://localhost:3000/issues'),
-            Component:Issues,
-        },
-        {
-          path:'/issueDetails/:id',
-          loader: ({params})=>fetch(`http://localhost:3000/issues/${params.id}`),
-          element:<PrivateRoutes><IssueDetails></IssueDetails></PrivateRoutes>
-        },
-        {
-            path:"/stuffs",
-            Component: Stuffs,
-        },
-        {
-            path:"/add-issue",
-            Component: AddIssue,
-        },
-        {
-            path:"/issues/*",
-            Component: Error2,
-        },
-        {
-            path:"/dashboard",
-            Component: Dashboard,
-        },
-    ]
-}
-])
+    children: [
+      {
+        index: true,
+        path: "/",
+        Component: Home,
+      },
+      {
+        path: "/login",
+        Component: LogIn,
+      },
+      {
+        path: "/register",
+        Component: Register,
+      },
+      {
+        path: "/issues",
+        loader: () => fetch("http://localhost:3000/issues"),
+        Component: Issues,
+      },
+      {
+        path: "/issueDetails/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/issues/${params.id}`),
+        element: (
+          <PrivateRoutes>
+            <IssueDetails></IssueDetails>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/stuffs",
+        Component: Stuffs,
+      },
+      {
+        path: "/add-issue",
+        Component: AddIssue,
+      },
+      {
+        path: "/issues/*",
+        Component: Error2,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoutes>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoutes>
+    ),
+    children: [
+        { 
+            path: "my-issues",
+            Component: MyIssues
+         }],
+  },
+]);

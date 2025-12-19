@@ -1,11 +1,8 @@
-
 import { Link, useLoaderData } from "react-router";
-
 
 const IssueDetails = () => {
   const data = useLoaderData();
-  const { image, title, description, amount, location, category, date } = data;
-
+  const { image, title, description, location, category, date } = data;
 
   return (
     <div>
@@ -25,8 +22,10 @@ const IssueDetails = () => {
             <p className="pt-2">Location : {location}</p>
             <p className="pb-2">Date : {date}</p>
             <p className="pb-2 text-gray-600">{description}</p>
-            <div className="flex justify-between items-center pb-2 font-bold">
-              <p>Amount: ${amount}</p>
+            <div className="flex items-center gap-2 pb-2 font-bold">
+              <button className="btn text-white bg-blue-500">Edit</button>
+              <button className="btn btn-primary">Boost</button>
+              <button className="btn text-white btn-error">Delete</button>
             </div>
           </div>
         </div>

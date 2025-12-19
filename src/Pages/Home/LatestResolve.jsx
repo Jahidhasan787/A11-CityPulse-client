@@ -5,7 +5,7 @@ const LatestResolve = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     {
-      fetch(`http://localhost:3000/issues`)
+      fetch(`http://localhost:3000/resolve-issues`)
         .then((res) => res.json())
         .then((data) => {
           setData(data);
