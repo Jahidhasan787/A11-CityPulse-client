@@ -3,7 +3,6 @@ import React, { use } from 'react';
 import { AuthContext } from '../../../AuthProvider';
 import UseAxiosSecure from '../../../Routes/UseAxiosSecure';
 import { Link } from 'react-router';
-import { toast } from 'react-toastify';
 
 const MyIssues = () => {
     const {user} = use(AuthContext);
@@ -17,7 +16,7 @@ const MyIssues = () => {
     })
 
     const handleDelete = (id) => {
-    fetch(`http://localhost:3000/issues/${id}`, {
+    fetch(`https://a11-city-pulse-server.vercel.app/issues/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -25,7 +24,6 @@ const MyIssues = () => {
     })
       .then((res) => {
         res.json();
-        toast("Added successfully");
       })
       .catch((err) => console.log(err));
   };
@@ -35,12 +33,13 @@ const MyIssues = () => {
         <div>
               {issues.map((issue) => (
         <div key={issue._id}>
-          <div className="bg-green-100 mb-5 flex justify-between p-5 rounded-xl gap-5">
+          <div className="bg-green-100 m-5 flex justify-between p-5 rounded-xl gap-5">
             <div className="flex w-[60%] lg:w-[25%] items-center">
               <img className="w-20 h-22 rounded-xl" src={issue.image} alt="" />
               <div>
                 <h1 className="px-2">Title: {issue.title}</h1>
                 <h1 className="text-red-400 rounded px-2 ">{issue.category}</h1>
+                <p className='px-2'>Location: {issue.location}</p>
               </div>
             </div>
             <div className=" w-[35%] hidden lg:block ">
@@ -49,6 +48,9 @@ const MyIssues = () => {
               </div>
             </div>
             <div className="flex md:flex-row flex-col justify-end items-center gap-5 w-[20%] lg:w-[30%] ">
+              <Link to={`/issueDetails/${issue._id}`}>
+                <button className="btn btn-primary">View</button>
+              </Link>
               <Link to={`/update-issue/${issue._id}`}>
                 <button className="btn btn-accent">Update</button>
               </Link>

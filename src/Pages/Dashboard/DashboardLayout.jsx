@@ -7,13 +7,14 @@ const DashboardLayout = () => {
   const links = (
     <>
       <NavLink to={"/dashboard/my-issues"}>My Issues</NavLink>
+      <NavLink to={"/dashboard/report-issue"}>Report Issues</NavLink>
     </>
   );
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
-        {/* Navbar */}
+        
         <nav className="navbar w-full gap-1 items-center bg-base-300">
           <label
             htmlFor="my-drawer-4"
@@ -39,7 +40,7 @@ const DashboardLayout = () => {
             City<span className="text-red-500">Pulse</span>
           </p>
         </nav>
-        {/* Page content here */}
+        
         <Outlet></Outlet>
       </div>
 
@@ -50,16 +51,15 @@ const DashboardLayout = () => {
           className="drawer-overlay"
         ></label>
         <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
-          {/* Sidebar content here */}
+         
           <ul className="menu w-full grow">
-            {/* List item */}
+           
             <li>
               <Link
                 to={"/"}
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Homepage"
               >
-                {/* Home icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
