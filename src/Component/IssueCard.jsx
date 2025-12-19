@@ -11,11 +11,22 @@ const IssueCard = ({ issue }) => {
         <figure>
           <img
             src={image}
+<<<<<<< HEAD
             alt=""
+=======
+            alt="plant image"
+>>>>>>> 31b3bfa5c464f47331bc279e6b575794d852797c
             className="w-full mx-auto h-[250px] rounded-xl mb-3"
           />
         </figure>
         <div className="">
+<<<<<<< HEAD
+=======
+          <div className="flex justify-between gap-2 items-center pb-3">
+            <h2 className="card-title">{title}</h2>
+            <span className="bg-green-200 text-[.8rem] rounded-md px-2 py-1">{category}</span>
+          </div>
+>>>>>>> 31b3bfa5c464f47331bc279e6b575794d852797c
           <div className=" pb-3">
             <h2 className="card-title">{title}</h2>
             <span className=" text-sm rounded text-gray-500">

@@ -7,8 +7,13 @@ const Work = () => {
       <p className="text-gray-600 text-center">
         Simple steps to report and resolve public issues
       </p>
+<<<<<<< HEAD
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 my-8 ">
         <div className=" h-full p-6 rounded-2xl shadow text-center bg-gradient-to-t from-green-100 to-gray-100">
+=======
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 my-10">
+        <div className=" h-full bg-gray-100 p-6 rounded-2xl shadow text-center">
+>>>>>>> 31b3bfa5c464f47331bc279e6b575794d852797c
           <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl font-bold">
             1
           </div>
