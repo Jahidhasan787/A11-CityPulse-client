@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const Error = () => {
     return (
         <div>
-          <div className='flex flex-col items-center justify-center py-8'>
+          <div className='flex flex-col items-center min-h-screen justify-center py-8'>
             
             <img src={errorImage} className='' alt="" />
             <div className='text-center'>

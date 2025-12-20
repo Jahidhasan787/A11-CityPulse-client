@@ -15,20 +15,15 @@ const IssueCard = ({ issue }) => {
             className="w-full mx-auto h-[250px] rounded-xl mb-3"
           />
         </figure>
-        <div className="">
-
-
-          <div className="flex justify-between gap-2 items-center pb-3">
-            <h2 className="card-title">{title}</h2>
-            <span className="bg-green-200 text-[.8rem] rounded-md px-2 py-1">{category}</span>
-          </div>
+        <div>
 
           <div className=" pb-3">
-            <h2 className="card-title">{title}</h2>
-            <span className=" text-sm rounded text-gray-500">
+            <h2 className="font-bold text-2xl">{title}</h2>
+            <p className=" text-sm rounded text-gray-500 ">
               Category: {category}
-            </span>
-            <div className="flex flex-wrap gap-2 py-3">
+            </p>
+
+            <div className="flex flex-wrap gap-2 pt-1 pb-5">
               <span
                 className={`px-3 py-1 text-sm rounded-full  ${
                   status === "Resolved"

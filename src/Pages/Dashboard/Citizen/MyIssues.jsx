@@ -30,12 +30,12 @@ const MyIssues = () => {
 
 
     return (
-        <div>
+        <div className='min-h-screen'>
               {issues.map((issue) => (
         <div key={issue._id}>
-          <div className="bg-green-100 m-5 flex justify-between p-5 rounded-xl gap-5">
-            <div className="flex w-[60%] lg:w-[25%] items-center">
-              <img className="w-20 h-22 rounded-xl" src={issue.image} alt="" />
+          <div className="bg-green-200 m-5 flex flex-col md:flex-row items-center justify-between p-5 rounded-xl gap-5">
+            <div className="flex w-[90%] lg:w-[25%] items-center">
+              <img className="md:w-20 w-40 h-30 md:h-22  rounded-xl" src={issue.image} alt="" />
               <div>
                 <h1 className="px-2">Title: {issue.title}</h1>
                 <h1 className="text-red-400 rounded px-2 ">{issue.category}</h1>
@@ -47,7 +47,7 @@ const MyIssues = () => {
                 {issue.description}
               </div>
             </div>
-            <div className="flex md:flex-row flex-col justify-end items-center gap-5 w-[20%] lg:w-[30%] ">
+            <div className="flex md:justify-end items-center gap-3 w-[90%] md:w-[20%] lg:w-[30%] ">
               <Link to={`/issueDetails/${issue._id}`}>
                 <button className="btn btn-primary">View</button>
               </Link>

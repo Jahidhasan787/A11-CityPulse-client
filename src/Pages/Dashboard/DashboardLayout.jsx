@@ -6,8 +6,8 @@ const DashboardLayout = () => {
  
   const links = (
     <>
-      <NavLink to={"/dashboard/my-issues"}>My Issues</NavLink>
-      <NavLink to={"/dashboard/report-issue"}>Report Issues</NavLink>
+      <NavLink to={"/dashboard/my-issues"} className={"py-2"}>My Issues</NavLink>
+      <NavLink to={"/dashboard/report-issue"} className={"py-2"}>Report Issues</NavLink>
     </>
   );
   return (
@@ -36,9 +36,9 @@ const DashboardLayout = () => {
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <p className="font-bold text-xl text-blue-700">
+          <Link to={"/"} data-tip="Menu"><p className="font-bold text-xl text-blue-700" >
             City<span className="text-red-500">Pulse</span>
-          </p>
+          </p></Link>
         </nav>
         
         <Outlet></Outlet>
@@ -86,9 +86,8 @@ const DashboardLayout = () => {
                   <div tabIndex={0} role="button" className=" ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
+                      className="h-6 w-6"
                       fill="none"
-                      viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
                       <path

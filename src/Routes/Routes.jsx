@@ -15,6 +15,9 @@ import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
 import MyIssues from "../Pages/Dashboard/Citizen/MyIssues";
 import ReportIssue from "../Pages/Dashboard/Citizen/ReportIssue";
 import Update from "../Component/Update";
+import Payment from "../Component/Payment";
+import PaymentSuccess from "../Component/PaymentSuccess";
+import PaymentCancel from "../Component/PaymentCancel";
 
 export const router = createBrowserRouter([
   {
@@ -84,7 +87,19 @@ export const router = createBrowserRouter([
          {
             path:"report-issue",
             Component:ReportIssue
-         }
+         },
+         {
+            path:"payment/:id",
+            Component: Payment,
+         },
+         {
+            path:"payment-success",
+            Component: PaymentSuccess,
+         },
+         {
+            path:"payment-cancelled",
+            Component: PaymentCancel,
+         },
         ],
   },
 ]);
