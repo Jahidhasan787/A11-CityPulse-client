@@ -8,6 +8,7 @@ const DashboardLayout = () => {
     <>
       <NavLink to={"/dashboard/my-issues"} className={"py-2"}>My Issues</NavLink>
       <NavLink to={"/dashboard/report-issue"} className={"py-2"}>Report Issues</NavLink>
+      <NavLink to={"/dashboard/payment-history"} className={"py-2"}>Payments History</NavLink>
     </>
   );
   return (
