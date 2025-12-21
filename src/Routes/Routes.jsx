@@ -18,6 +18,7 @@ import Update from "../Component/Update";
 import Payment from "../Component/Payment";
 import PaymentSuccess from "../Component/PaymentSuccess";
 import PaymentCancel from "../Component/PaymentCancel";
+import PaymentsHistory from "../Pages/Dashboard/Admin/PaymentsHistory";
 
 export const router = createBrowserRouter([
   {
@@ -91,6 +92,10 @@ export const router = createBrowserRouter([
          {
             path:"payment/:id",
             Component: Payment,
+         },
+         {
+            path:"payment-history",
+            Component: PaymentsHistory,
          },
          {
             path:"payment-success",
