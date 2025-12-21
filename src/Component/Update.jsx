@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const Update = () => {
   const data = useLoaderData();
-  const { _id, title, description,  category } = data;
+  const { _id, title, description,  category, location } = data;
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -64,6 +64,15 @@ const Update = () => {
                       Broken Public Property
                     </option>
                   </select>
+                  <label className="label">Location:</label>
+                  <input
+                    type="text"
+                    name="title"
+                    className="input w-full"
+                    placeholder="Location"
+                    defaultValue={location}
+                    required
+                  />
                   <label className="label">Description:</label>
                   <div className="relative">
                     <textarea

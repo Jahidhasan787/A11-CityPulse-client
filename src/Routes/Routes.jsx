@@ -8,7 +8,7 @@ import Issues from "../Pages/Issues";
 import Stuffs from "../Pages/Stuffs";
 import Error2 from "../Component/Error2";
 import Dashboard from "../Pages/Dashboard/DashboardLayout";
-import AddIssue from "../Pages/AddIssue";
+import BecomeStaff from "../Pages/BecomeStaff";
 import PrivateRoutes from "./PrivateRoutes";
 import IssueDetails from "../Component/IssueDetails";
 import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/issues",
-        loader: () => fetch("https://a11-city-pulse-server.vercel.app/issues"),
+        loader: () => fetch("http://localhost:3000/issues"),
         Component: Issues,
       },
       {
@@ -54,11 +54,11 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/add-issue",
-        Component: AddIssue,
+        path: "/become-staff",
+        Component: BecomeStaff,
       },
       {
-        path: "/stuffs",
+        path: "/staffs",
         Component: Stuffs,
       },
      {

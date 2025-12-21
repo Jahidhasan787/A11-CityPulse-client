@@ -31,6 +31,7 @@ const MyIssues = () => {
 
     return (
         <div className='min-h-screen'>
+            <p className='text-5xl text-center mt-5'>My Issues ({issues.length})</p>
               {issues.map((issue) => (
         <div key={issue._id}>
           <div className="bg-green-200 m-5 flex flex-col md:flex-row items-center justify-between p-5 rounded-xl gap-5">
