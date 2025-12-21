@@ -12,7 +12,7 @@ const PaymentsHistory = () => {
     const { data: payments = [] } = useQuery({
         queryKey: ['payments', user.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/issues`)
+            const res = await axiosSecure.get(`/payments?email=${user.email}`)
             return res.data
         }
     })
@@ -27,16 +27,20 @@ const PaymentsHistory = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
+                            <th>Issue Id</th>
                             <th>Amount</th>
                             <th>Trx.Id</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         {payments.map((payment,index) => <tr key={payment._id}>
                             <th>{index +1}</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
+                            <td>{payment.issueName}</td>
+                            <td>{payment._id}</td>
+                            <td>{payment.amount}</td>
+                            <td>{payment.transactionId}</td>
+                            
                         </tr>)}
                     </tbody>
                 </table>

@@ -2,12 +2,14 @@ import React, {  use, useState } from "react";
 import { Link } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider";
+import UseAxiosSecure from "../Routes/UseAxiosSecure";
 
 
 const BecomeStaff = () => {
   const [eye, setEye] = useState(false);
   const [error, setError] = useState("");
-  const{user} = use(AuthContext)
+  const{user} = use(AuthContext);
+  const axiosSecure = UseAxiosSecure();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,20 +37,8 @@ const BecomeStaff = () => {
     console.log(formData)
     console.log(user)
 
-
-  //   fetch("https://a11-city-pulse-server.vercel.app/issues", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(formData),
-  //   })
-  //     .then((res) => {
-  //       res.json();
-  //       toast("Added successfully");
-  //     })
-  //     .catch((err) => console.log(err));
-  //   e.target.reset();
+      axiosSecure.post('/', formData)
+  
   };
 
   return (
@@ -56,7 +46,7 @@ const BecomeStaff = () => {
       <div className="hero-content w-11/12 ">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleSubmit} className="card-body">
-            <h1 className="text-4xl font-bold pb-5"></h1>
+            <h1 className="text-4xl font-bold pb-5">Be a staff!</h1>
             <fieldset className="fieldset">
               <label className="label">Name:</label>
               <input

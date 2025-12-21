@@ -4,14 +4,19 @@ import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider";
+import UseAxiosSecure from "../Routes/UseAxiosSecure";
 
 const Register = () => {
   const [eye, setEye] = useState(false);
   const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+
   const { createUser, setUser, signInWithGoogle, updateUser } =
     use(AuthContext);
+
+  const axiosSecure = UseAxiosSecure();
+
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -33,6 +38,19 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        const userInfo = {
+          email: user.email,
+          displayName: name,
+          photoURL:photo
+
+        }
+          axiosSecure.post('/users',userInfo)
+          .then(res=>{
+            if(res.data.insertedId){
+              console.log("user created in the database")
+            }
+          })
+
         console.log(user);
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {

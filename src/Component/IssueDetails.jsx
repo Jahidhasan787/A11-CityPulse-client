@@ -19,7 +19,7 @@ const IssueDetails = () => {
   } = data;
 
   const handleDelete = (id) => {
-    fetch(`https://a11-city-pulse-server.vercel.app/issues/${id}`, {
+    fetch(`http://localhost:3000/issues/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
