@@ -82,7 +82,7 @@ const IssueDetails = () => {
               >
                 <button className="">Edit</button>
               </Link>
-              <Link to={`/dashboard/payment/${_id}`} className="btn btn-primary">Boost</Link>
+              <Link to={`/dashboard/payment/${_id}`} className={`btn btn-primary ${                  priority === "High" ? "btn-disabled" :""}`} >Boost</Link>
               <label
                 htmlFor="my_modal_6"
                 className={`btn ${
