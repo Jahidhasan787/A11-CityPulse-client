@@ -31,10 +31,12 @@ const Payment = () => {
     }
 
     return (
-        <div className='mx-auto text-center'>
-            <h2>Please pay $100 for boost</h2>
-            <button onClick={handlePayment} className='btn btn-primary'>Pay</button>
+        <div className="card w-96  bg-base-100 mx-auto card-sm shadow-sm m-10">
+        <div className="card-body">
+          <h2 className="text-2xl text-center pb-5 ">Please pay $100 for boost</h2>
+          <button onClick={handlePayment} className='btn btn-primary'>Pay</button>
         </div>
+      </div>
     );
 };
 

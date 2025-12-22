@@ -1,41 +1,69 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { AuthContext } from "../../AuthProvider";
 import UseRole from "../../UseRole";
+import { MdAssignmentAdd, MdDashboard, MdManageAccounts, MdOutlinePayments } from "react-icons/md";
+import { HiClipboardList } from "react-icons/hi";
+import { FaUserShield } from "react-icons/fa";
 
 const DashboardLayout = () => {
   const { role } = UseRole();
+  const { user } = use(AuthContext);
 
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
-        <nav className="navbar w-full gap-1 items-center bg-base-300">
-          <label
-            htmlFor="my-drawer-4"
-            aria-label="open sidebar"
-            className="btn btn-square btn-ghost"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2"
-              fill="none"
-              stroke="currentColor"
-              className="my-1.5 inline-block size-4"
+        <nav className="navbar w-full gap-1 justify-between bg-base-300">
+          <div className="flex gap-1 items-center">
+            <label
+              htmlFor="my-drawer-4"
+              aria-label="open sidebar"
+              className="btn btn-square btn-ghost"
             >
-              <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-              <path d="M9 4v16"></path>
-              <path d="M14 10l2 2l-2 2"></path>
-            </svg>
-          </label>
-          <Link to={"/"} data-tip="Menu">
-            <p className="font-bold text-xl text-blue-700">
-              City<span className="text-red-500">Pulse</span>
-            </p>
-          </Link>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2"
+                fill="none"
+                stroke="currentColor"
+                className="my-1.5 inline-block size-4"
+              >
+                <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                <path d="M9 4v16"></path>
+                <path d="M14 10l2 2l-2 2"></path>
+              </svg>
+            </label>
+            <Link to={"/"} data-tip="Menu">
+              <p className="font-bold text-xl text-blue-700">
+                City<span className="text-red-500">Pulse</span>
+              </p>
+            </Link>
+          </div>
+
+          {user && (
+            <>
+              <div className="dropdown mr-10">
+                <div tabIndex={0} className="ml-10 ">
+                  <img
+                    className="rounded-full h-12 min-w-10 outline"
+                    src={user.photoURL || "/Avatar.png"}
+                    alt=""
+                  />
+                </div>
+                <ul
+                  tabIndex="0"
+                  className="menu  dropdown-content bg-base-100 mt-2 w-30 p-2 shadow "
+                >
+                  <p className="text-center font-semibold pb-1 bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent">
+                    {user.displayName}
+                  </p>
+                </ul>
+              </div>
+            </>
+          )}
         </nav>
 
         <Outlet></Outlet>
@@ -73,44 +101,62 @@ const DashboardLayout = () => {
             </li>
             <hr className="is-drawer-close:hidden text-gray-300" />
             <li>
-              <div
+              {role === "user" && (
+                <>
+                  <Link
+                    to={"/dashboard/my-issues"}
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="my issue"
+                  >
+                    <HiClipboardList />
+                    <span className="is-drawer-close:hidden"> My Issues</span>
+                  </Link>
+                  <Link
+                    to={"/dashboard/report-issue"}
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Report issue"
+                  >
+                    <MdAssignmentAdd />
+                    <span className="is-drawer-close:hidden"> Report Issue</span>
+                  </Link>
+                </>
+              )}
+              {role === "admin" && (
+                <>
+                  <Link
+                    to={"/dashboard/payment-history"}
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Payments"
+                  >
+                    <MdOutlinePayments />
+                    <span className="is-drawer-close:hidden"> Payment History</span>
+                  </Link>
+                  <Link
+                    to={"/dashboard/approve-staff"}
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Approve Staff"
+                  >
+                    <MdManageAccounts />
+                    <span className="is-drawer-close:hidden">Staff Approval</span>
+                  </Link>
+                  <Link
+                    to={"/dashboard/user-manage"}
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="User management"
+                  >
+                    
+                    <FaUserShield />
+                    <span className="is-drawer-close:hidden">User Management</span>
+                  </Link>
+                </>
+              )}
+
+              {/* <div
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right "
                 data-tip="Menu"
               >
-                <div className="dropdown is-drawer-open:hidden">
-                  <div tabIndex={0} role="button" className=" ">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 6h16M4 12h8m-8 6h16"
-                      />
-                    </svg>
-                  </div>
 
-                  <ul
-                    tabIndex="-1"
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2  shadow"
-                  >
-                    {role === "user" && (
-                      <>
-                        <NavLink to={"/dashboard/my-issues"} className={"py-2"}>
-                          My Issues
-                        </NavLink>
-                        <NavLink
-                          to={"/dashboard/report-issue"}
-                          className={"py-2"}
-                        >
-                          Report Issues
-                        </NavLink>
-                      </>
-                    )}
+                 
                     {role === "admin" && (
                       <>
                         <NavLink
@@ -162,7 +208,7 @@ const DashboardLayout = () => {
                     </>
                   )}
                 </span>
-              </div>
+              </div> */}
             </li>
             <hr className="is-drawer-close:hidden text-gray-300" />
             <li>
@@ -187,6 +233,16 @@ const DashboardLayout = () => {
                 </svg>
                 <span className="is-drawer-close:hidden">Settings</span>
               </button>
+            </li>
+            <li>
+              <Link
+                to={"/dashboard"}
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Dashboard"
+              >
+                <MdDashboard />
+                <span className="is-drawer-close:hidden">Dashboard</span>
+              </Link>
             </li>
           </ul>
         </div>

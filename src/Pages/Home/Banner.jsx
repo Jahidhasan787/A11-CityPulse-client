@@ -8,24 +8,24 @@ import pipe from "../../assets/broken-water-pipe-leaking.webp";
 
 const Banner = () => {
   return (
-    <Carousel autoPlay={true} infiniteLoop={true} className="pt-8 lg:w-[800px] mx-auto rounded-2xl">
-      <div className="h-[400px]">
+    <Carousel autoPlay={true} infiniteLoop={true} className="pt-8 lg:w-[1100px] mx-auto rounded-2xl">
+      <div className="h-[500px]">
         <img src={potholes} className="h-full object-cover rounded-lg" />
         <p className="legend">Potholes</p>
       </div>
-      <div className="h-[400px]">
+      <div className="h-[500px]">
         <img src={streetLight} className="h-full rounded-lg  object-cover" />
         <p className="legend">Brocken street Light</p>
       </div>
 
-      <div className="h-[400px]">
+      <div className="h-[500px]">
         <img
           src={illegalConstruction}
           className="h-full rounded-lg object-cover"
         />
         <p className="legend">Illegal construction</p>
       </div>
-      <div className="h-[400px]">
+      <div className="h-[500px]">
         <img
           src={pipe}
           className="h-full rounded-lg object-cover"
