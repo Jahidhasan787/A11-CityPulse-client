@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider";
 import UseAxiosSecure from "../Routes/UseAxiosSecure";
+import { toast } from "react-toastify";
 
 
 const BecomeStaff = () => {
@@ -18,6 +19,7 @@ const BecomeStaff = () => {
       email: e.target.email.value,
       phone: e.target.phone.value,
       photo: e.target.photo.value,
+      address: e.target.address.value
     };
     const password = e.target.password.value;
 
@@ -37,7 +39,13 @@ const BecomeStaff = () => {
     console.log(formData)
     console.log(user)
 
-      axiosSecure.post('/', formData)
+      axiosSecure.post('/staffs', formData)
+      .then(res =>{
+        if(res.data.insertedId){
+          toast("Your application has been submitted ")
+          e.target.reset();
+        }
+      })
   
   };
 
@@ -69,6 +77,16 @@ const BecomeStaff = () => {
                 className="input"
                 placeholder="Phone no."
               />
+              <label className="label">Address:</label>
+                <div className="relative">
+                  <textarea
+                    className="textarea w-full"
+                    rows={4}
+                    name="address"
+                    id=""
+                    placeholder="Write your address.."
+                  ></textarea>
+                </div>
               <label className="label">Photo URL:</label>
               <input
                 type="text"
