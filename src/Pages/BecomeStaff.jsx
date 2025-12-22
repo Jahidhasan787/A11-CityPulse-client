@@ -1,4 +1,4 @@
-import React, {  use, useState } from "react";
+import React, {  use } from "react";
 import { Link } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider";
@@ -7,8 +7,6 @@ import { toast } from "react-toastify";
 
 
 const BecomeStaff = () => {
-  const [eye, setEye] = useState(false);
-  const [error, setError] = useState("");
   const{user} = use(AuthContext);
   const axiosSecure = UseAxiosSecure();
 
@@ -16,28 +14,11 @@ const BecomeStaff = () => {
     e.preventDefault();
     const formData = {
       name: e.target.name.value,
-      email: e.target.email.value,
+      email: user?.email,
       phone: e.target.phone.value,
       photo: e.target.photo.value,
       address: e.target.address.value
     };
-    const password = e.target.password.value;
-
-    if (password.length < 6) {
-      setError("password must be at least 6 character");
-      return;
-    } else if (!/[A-Z]/.test(password)) {
-      setError("password must have uppercase letter");
-      return;
-    } else if (!/[a-z]/.test(password)) {
-      setError("password must have lowercase letter");
-      return;
-    } else {
-      setError("");
-    }
-
-    console.log(formData)
-    console.log(user)
 
       axiosSecure.post('/staffs', formData)
       .then(res =>{
@@ -63,13 +44,6 @@ const BecomeStaff = () => {
                 className="input"
                 placeholder="Name"
               />
-              <label className="label">Email:</label>
-              <input
-                type="email"
-                name="email"
-                className="input"
-                placeholder="Email"
-              />
               <label className="label">Phone No:</label>
               <input
                 type="number"
@@ -94,29 +68,9 @@ const BecomeStaff = () => {
                 className="input"
                 placeholder="Photo URL"
               />
-              <label className="label">Password:</label>
-              <div className="relative">
-                <input
-                  name="password"
-                  type={eye ? "text" : "password"}
-                  className="input"
-                  placeholder="Password"
-                  required
-                />
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setEye(!eye);
-                  }}
-                  className="btn btn-xs absolute right-6 z-1 top-2"
-                >
-                  {eye ? <FaEyeSlash /> : <FaEye />}
-                </button>
-              </div>
               <button type="submit" className="btn btn-neutral mt-4 mb-1">
                 Submit
               </button>
-              {error && <p className="py-1 text-red-600">{error}</p>}
             </fieldset>
           </form>
         </div>

@@ -1,22 +1,15 @@
-import React, {  } from "react";
+import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { AuthContext } from "../../AuthProvider";
+import UseRole from "../../UseRole";
 
 const DashboardLayout = () => {
- 
-  const links = (
-    <>
-      <NavLink to={"/dashboard/my-issues"} className={"py-2"}>My Issues</NavLink>
-      <NavLink to={"/dashboard/report-issue"} className={"py-2"}>Report Issues</NavLink>
-      <NavLink to={"/dashboard/payment-history"} className={"py-2"}>Payments History</NavLink>
-      <NavLink to={"/dashboard/approve-staff"} className={"py-2"}>Approve Staff</NavLink>
-    </>
-  );
+  const { role } = UseRole();
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
-        
         <nav className="navbar w-full gap-1 items-center bg-base-300">
           <label
             htmlFor="my-drawer-4"
@@ -38,12 +31,15 @@ const DashboardLayout = () => {
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <Link to={"/"} data-tip="Menu"><p className="font-bold text-xl text-blue-700" >
-            City<span className="text-red-500">Pulse</span>
-          </p></Link>
+          <Link to={"/"} data-tip="Menu">
+            <p className="font-bold text-xl text-blue-700">
+              City<span className="text-red-500">Pulse</span>
+            </p>
+          </Link>
         </nav>
-        
+
         <Outlet></Outlet>
+        <h1>admin dashvoard</h1>
       </div>
 
       <div className="drawer-side is-drawer-close:overflow-visible">
@@ -53,9 +49,7 @@ const DashboardLayout = () => {
           className="drawer-overlay"
         ></label>
         <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
-         
           <ul className="menu w-full grow">
-           
             <li>
               <Link
                 to={"/"}
@@ -105,14 +99,74 @@ const DashboardLayout = () => {
                     tabIndex="-1"
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2  shadow"
                   >
-                    {links}
+                    {role === "user" && (
+                      <>
+                        <NavLink to={"/dashboard/my-issues"} className={"py-2"}>
+                          My Issues
+                        </NavLink>
+                        <NavLink
+                          to={"/dashboard/report-issue"}
+                          className={"py-2"}
+                        >
+                          Report Issues
+                        </NavLink>
+                      </>
+                    )}
+                    {role === "admin" && (
+                      <>
+                        <NavLink
+                          to={"/dashboard/payment-history"}
+                          className={"py-2"}
+                        >
+                          Payments History
+                        </NavLink>
+                        <NavLink
+                          to={"/dashboard/approve-staff"}
+                          className={"py-2"}
+                        >
+                          Approve Staff
+                        </NavLink>
+                        <NavLink
+                          to={"/dashboard/user-manage"}
+                          className={"py-2"}
+                        >
+                          User Management
+                        </NavLink>
+                      </>
+                    )}
                   </ul>
                 </div>
-                <span className="is-drawer-close:hidden flex flex-col">{links}</span>
-              </div> 
+                <span className="is-drawer-close:hidden flex flex-col">
+                  <NavLink to={"/dashboard/my-issues"} className={"py-2"}>
+                    My Issues
+                  </NavLink>
+                  <NavLink to={"/dashboard/report-issue"} className={"py-2"}>
+                    Report Issues
+                  </NavLink>
+                  {role === "admin" && (
+                    <>
+                      <NavLink
+                        to={"/dashboard/payment-history"}
+                        className={"py-2"}
+                      >
+                        Payments History
+                      </NavLink>
+                      <NavLink
+                        to={"/dashboard/approve-staff"}
+                        className={"py-2"}
+                      >
+                        Approve Staff
+                      </NavLink>
+                      <NavLink to={"/dashboard/user-manage"} className={"py-2"}>
+                        User Management
+                      </NavLink>
+                    </>
+                  )}
+                </span>
+              </div>
             </li>
             <hr className="is-drawer-close:hidden text-gray-300" />
-             <li>
+            <li>
               <button
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Settings"

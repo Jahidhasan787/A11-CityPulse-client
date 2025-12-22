@@ -20,6 +20,8 @@ import PaymentSuccess from "../Component/PaymentSuccess";
 import PaymentCancel from "../Component/PaymentCancel";
 import PaymentsHistory from "../Pages/Dashboard/Admin/PaymentsHistory";
 import ApproveStaff from "../Pages/Dashboard/Admin/ApproveStaff";
+import UsersManage from "../Pages/Dashboard/Admin/UsersManage";
+import AdminRoutes from "./AdminRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -57,7 +59,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/become-staff",
-        Component: BecomeStaff,
+       element: (
+          <PrivateRoutes>
+            <BecomeStaff></BecomeStaff>
+          </PrivateRoutes>)
       },
       {
         path: "/staffs",
@@ -96,7 +101,7 @@ export const router = createBrowserRouter([
          },
          {
             path:"payment-history",
-            Component: PaymentsHistory,
+            element:<AdminRoutes><PaymentsHistory></PaymentsHistory></AdminRoutes>,
          },
          {
             path:"payment-success",
@@ -108,7 +113,11 @@ export const router = createBrowserRouter([
          },
          {
             path:"approve-staff",  
-            Component: ApproveStaff,
+            element:<AdminRoutes><ApproveStaff></ApproveStaff></AdminRoutes>,
+         },
+         {
+            path:"user-manage",  
+            element:<AdminRoutes><UsersManage></UsersManage></AdminRoutes>,
          },
         ],
   },
