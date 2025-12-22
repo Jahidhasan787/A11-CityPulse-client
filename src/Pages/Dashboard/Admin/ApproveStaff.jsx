@@ -10,7 +10,7 @@ const ApproveStaff = () => {
   const axiosSecure = UseAxiosSecure();
 
   const { refetch, data: staffs = [] } = useQuery({
-    queryKey: ["stuffs", "pending"],
+    queryKey: ["staffs", "pending"],
     queryFn: async () => {
       const res = await axiosSecure.get("/staffs");
       return res.data;
@@ -34,9 +34,18 @@ const ApproveStaff = () => {
     updateStatus(id, "rejected");
   };
 
+  const handleDelete =(id)=>{
+    axiosSecure.delete(`/staffs/${id}`).then((res) => {
+      if (res.data.deletedCount) {
+        refetch();
+        toast(`Stuff deleted successfully`);
+      }
+    });
+  }
+
   return (
     <div>
-      <h2 className="text-5xl text-center">
+      <h2 className="text-5xl text-center pt-5">
         Staffs Pending Approval ({staffs.length})
       </h2>
       <div className="overflow-x-auto">
@@ -73,7 +82,7 @@ const ApproveStaff = () => {
                   >
                     <ImCross />
                   </button>
-                  <button className="btn btn-accent">
+                  <button className="btn btn-accent text-lg" onClick={()=>handleDelete(staff._id)}>
                     <MdDelete />
                   </button>
                 </td>

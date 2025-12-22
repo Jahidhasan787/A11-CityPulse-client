@@ -2,9 +2,14 @@ import React, { use } from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { AuthContext } from "../../AuthProvider";
 import UseRole from "../../UseRole";
-import { MdAssignmentAdd, MdDashboard, MdManageAccounts, MdOutlinePayments } from "react-icons/md";
+import {
+  MdAssignmentAdd,
+  MdDashboard,
+  MdManageAccounts,
+  MdOutlinePayments,
+} from "react-icons/md";
 import { HiClipboardList } from "react-icons/hi";
-import { FaUserShield } from "react-icons/fa";
+import { FaRegListAlt, FaUserShield } from "react-icons/fa";
 
 const DashboardLayout = () => {
   const { role } = UseRole();
@@ -117,19 +122,33 @@ const DashboardLayout = () => {
                     data-tip="Report issue"
                   >
                     <MdAssignmentAdd />
-                    <span className="is-drawer-close:hidden"> Report Issue</span>
+                    <span className="is-drawer-close:hidden">
+                      {" "}
+                      Report Issue
+                    </span>
                   </Link>
                 </>
               )}
               {role === "admin" && (
                 <>
                   <Link
+                    to={"/dashboard/all-issues"}
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="All issues"
+                  >
+                    <FaRegListAlt />
+                    <span className="is-drawer-close:hidden">All Issues</span>
+                  </Link>
+                  <Link
                     to={"/dashboard/payment-history"}
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                     data-tip="Payments"
                   >
                     <MdOutlinePayments />
-                    <span className="is-drawer-close:hidden"> Payment History</span>
+                    <span className="is-drawer-close:hidden">
+                      {" "}
+                      Payment History
+                    </span>
                   </Link>
                   <Link
                     to={"/dashboard/approve-staff"}
@@ -137,16 +156,19 @@ const DashboardLayout = () => {
                     data-tip="Approve Staff"
                   >
                     <MdManageAccounts />
-                    <span className="is-drawer-close:hidden">Staff Approval</span>
+                    <span className="is-drawer-close:hidden">
+                      Staff Approval
+                    </span>
                   </Link>
                   <Link
                     to={"/dashboard/user-manage"}
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                     data-tip="User management"
                   >
-                    
                     <FaUserShield />
-                    <span className="is-drawer-close:hidden">User Management</span>
+                    <span className="is-drawer-close:hidden">
+                      User Management
+                    </span>
                   </Link>
                 </>
               )}

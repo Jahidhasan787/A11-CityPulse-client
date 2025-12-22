@@ -25,8 +25,8 @@ const Navbar = () => {
       <NavLink to={"/become-staff"}>
         <li className="pl-5 ">Become a Staff </li>
       </NavLink>
-      <NavLink to={"/staffs"}>
-        <li className="pl-5  ">All Staff</li>
+      <NavLink to={"/boosted-issues"}>
+        <li className="pl-5  ">Boosted Issues</li>
       </NavLink>
     </>
   );

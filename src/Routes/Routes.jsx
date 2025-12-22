@@ -5,7 +5,6 @@ import Home from "../Pages/Home";
 import LogIn from "../Pages/LogIn";
 import Register from "../Pages/Register";
 import Issues from "../Pages/Issues";
-import Stuffs from "../Pages/Stuffs";
 import Error2 from "../Component/Error2";
 import Dashboard from "../Pages/Dashboard/DashboardLayout";
 import BecomeStaff from "../Pages/BecomeStaff";
@@ -22,6 +21,8 @@ import PaymentsHistory from "../Pages/Dashboard/Admin/PaymentsHistory";
 import ApproveStaff from "../Pages/Dashboard/Admin/ApproveStaff";
 import UsersManage from "../Pages/Dashboard/Admin/UsersManage";
 import AdminRoutes from "./AdminRoutes";
+import AllIssues from "../Pages/Dashboard/Admin/AllIssues";
+import BoostedIssue from "../Pages/BoostedIssue";
 
 export const router = createBrowserRouter([
   {
@@ -65,8 +66,8 @@ export const router = createBrowserRouter([
           </PrivateRoutes>)
       },
       {
-        path: "/staffs",
-        Component: Stuffs,
+        path: "/boosted-issues",
+        Component: BoostedIssue,
       },
      {
           path:"/update-issue/:id",
@@ -118,6 +119,10 @@ export const router = createBrowserRouter([
          {
             path:"user-manage",  
             element:<AdminRoutes><UsersManage></UsersManage></AdminRoutes>,
+         },
+         {
+            path:"all-issues",  
+            element:<AdminRoutes><AllIssues></AllIssues></AdminRoutes>,
          },
         ],
   },
