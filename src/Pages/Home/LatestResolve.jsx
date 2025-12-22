@@ -5,7 +5,7 @@ const LatestResolve = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     {
-      fetch(`http://localhost:3000/resolve-issues`)
+      fetch(`https://a11-city-pulse-server.vercel.app/resolve-issues`)
         .then((res) => res.json())
         .then((data) => {
           setData(data);

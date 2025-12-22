@@ -13,7 +13,7 @@ const Update = () => {
        category: e.target.category.value,
        description:e.target.description.value,
     }
-     fetch(`http://localhost:3000/issues/${_id}`,{
+     fetch(`https://a11-city-pulse-server.vercel.app/issues/${_id}`,{
             method:"PUT",
             headers:{
                 'content-type':'application/json'

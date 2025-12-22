@@ -7,7 +7,7 @@ import { EffectCoverflow, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ReviewCard from "../../Component/ReviewCard";
 
-const reviewPromise = fetch("http://localhost:3000/reviews").then((res) =>
+const reviewPromise = fetch("https://a11-city-pulse-server.vercel.app/reviews").then((res) =>
   res.json()
 );
 

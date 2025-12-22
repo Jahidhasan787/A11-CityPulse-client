@@ -39,7 +39,6 @@ const DashboardLayout = () => {
         </nav>
 
         <Outlet></Outlet>
-        <h1>admin dashvoard</h1>
       </div>
 
       <div className="drawer-side is-drawer-close:overflow-visible">

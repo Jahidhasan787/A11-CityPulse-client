@@ -18,7 +18,7 @@ const ReportIssue = () => {
       status : "Pending",
       date: e.target.date.value,
     };
-    fetch("http://localhost:3000/issues", {
+    fetch("https://a11-city-pulse-server.vercel.app/issues", {
       method: "POST",
       headers: {
         "content-type": "application/json",
